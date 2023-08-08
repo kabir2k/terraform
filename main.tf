@@ -29,7 +29,7 @@ resource "aws_s3_object" "object-3" {
   source = ".env"
   etag = filemd5(".env")
 }
- .env
+ 
 
 resource "aws_instance" "project111" {
   ami           = "ami-0f5ee92e2d63afc18" 
