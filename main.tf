@@ -90,7 +90,7 @@ resource "aws_iam_policy" "bucket_policy" {
 }
 
 resource "aws_iam_role" "ec2_role" {
-  name = "ecssssssss2reuigthsjakebhd-0"
+  name = "aws_s3_access"
 
   assume_role_policy = jsonencode({ 
 
@@ -114,7 +114,7 @@ resource "aws_iam_role_policy_attachment" "some_bucket_policy" {
 
 
 resource "aws_iam_instance_profile" "some_profile" {
-  name = "new1afkzbds"
+  name = "aws_s3_profile"
   role = aws_iam_role.ec2_role.name
 }
 
