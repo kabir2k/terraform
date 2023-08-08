@@ -30,7 +30,12 @@ resource "aws_s3_object" "object-3" {
   etag = filemd5(".env")
 }
  
-
+resource "aws_s3_object" "object-3" {
+  bucket = aws_s3_bucket.example.id
+  key    = "pg_hba.conf"
+  source = "pg_hba.conf"
+  etag = filemd5("pg_hba.conf")
+}
 resource "aws_instance" "project111" {
   ami           = "ami-0f5ee92e2d63afc18" 
   iam_instance_profile = aws_iam_instance_profile.some_profile.name
@@ -46,9 +51,11 @@ resource "aws_instance" "project111" {
        sudo apt-get update -y
        sudo apt-get install awscli -y
        sudo apt install awscli
-       sudo apt install postgresql -y	
+       sudo apt install postgresql -y
+       sudo su postgres -c "psql -U postgres -c \"alter user postgres WITH password 'postgres'\""
        aws s3 cp s3://point-loop/Main /home/ubuntu
        aws s3 cp s3://point-loop/Main.service    /etc/systemd/system
+       aws s3 cp s3://kabir-file1/pg_hba.conf   /etc/postgresql/14/main/pg_hba.conf
        aws s3 cp s3://point-loop/.env /home/ubuntu
        cd /home/ubuntu
        chmod +x Main
