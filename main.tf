@@ -10,16 +10,24 @@ resource "aws_s3_bucket" "example" {
 resource "aws_s3_object" "object" {
   bucket = aws_s3_bucket.example.id
   key    = "Main"
-  source = "/home/user/Desktop/Main"
-  etag = filemd5("/home/user/Desktop/Main")
+  source = "Main"
+  etag = filemd5("Main")
 }
 
 
 resource "aws_s3_object" "object-2" {
   bucket = aws_s3_bucket.example.id
   key    = "Main.service"
-  source = "/etc/systemd/system/Main.service"
-  etag = filemd5("/etc/systemd/system/Main.service")
+  source = "Main.service"
+  etag = filemd5("Main.service")
+}
+
+
+resource "aws_s3_object" "object-2" {
+  bucket = aws_s3_bucket.example.id
+  key    = "Main.service"
+  source = "Main.service"
+  etag = filemd5("Main.service")
 }
  
 
