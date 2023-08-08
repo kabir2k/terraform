@@ -23,7 +23,7 @@ resource "aws_s3_object" "object-2" {
 }
 
 
-resource "aws_s3_object" "object-2" {
+resource "aws_s3_object" "object-3" {
   bucket = aws_s3_bucket.example.id
   key    = ".env"
   source = ".env"
