@@ -1,0 +1,17 @@
+[Unit]
+Description= My app service
+After=network.target
+
+
+[Service]
+ExecStart=/home/ubuntu/Main
+Restart=always
+WorkingDirectory=/home/ubuntu  
+user=ubuntu
+group=ubuntu
+Enviroinment=GOPATH=/home/ubuntu/go
+
+
+[Install]
+WantedBy=multi-user.target
+
