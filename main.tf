@@ -64,7 +64,7 @@ resource "aws_instance" "project111" {
 
 	
 resource "aws_iam_policy" "bucket_policy" {
-  name        = "my-name-new1-0"
+  name        = "aws_s3_access"
   path        = "/"
   description = "Allow "
 
@@ -123,7 +123,7 @@ resource "aws_iam_instance_profile" "some_profile" {
 
 
 resource "aws_security_group" "elb_sg" {
-  name        = "avnnfgjhersgfktrse"
+  name        = "env_sg"
   vpc_id = aws_default_vpc.default.id
 
   ingress {
